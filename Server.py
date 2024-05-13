@@ -8,7 +8,7 @@ PORT = 32973
 SERVER = socket.gethostname()
 ADDR = (SERVER, PORT)
 FORMAT = 'utf-8'
-DISCONNECT_MSG = "!DISCONNECT"
+DISCONNECT_MSG = "!Exit"
 
 server.bind(ADDR)
 
@@ -37,7 +37,7 @@ def handle_client(client, address):
         with lock:
             usernames.append(username)
             clients.append(client)
-        message = f"{username} has joined the chat."
+        message = f"{username} has joined the chat.\n"
         broadcast(message.encode(FORMAT))
 
     try:
